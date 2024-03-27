@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <filesystem>
 
-#include "sqlite3.h"
+#include "deps/sqlite3.h"
 
 std::string exec(const char* cmd) 
 {

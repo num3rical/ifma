@@ -14,8 +14,8 @@ all: $(TARGET)
 $(TARGET): ifma.o sqlite3.o
 	$(CXX) $(LDFLAGS) $(LIBS) $^ -o $@
 
-sqlite3.o: sqlite3.c sqlite3.h
-	$(CC) $(CFLAGS) -c -o $@ $<
+sqlite3.o: deps/sqlite3.c deps/sqlite3.h
+	$(CC) $(CFLAGS) -Ideps -c -o $@ $<
 
 install:
 	install $(TARGET) $(DESTDIR)$(PREFIX)

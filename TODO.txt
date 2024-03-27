@@ -1,0 +1,4 @@
+proper error handling (to stderr)
+switch to using flags instead of args
+don't require a prompt (if stdin is not interactive, skip promopt and require flags) or if --no-input is passed
+ask before removing entry, display entry that is to be removed

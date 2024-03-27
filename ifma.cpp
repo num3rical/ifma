@@ -2,12 +2,12 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <sqlite3.h>
-#include <sstream>
 #include <unistd.h>
 #include <cstring>
 #include <stdio.h>
 #include <filesystem>
+
+#include "sqlite3.h"
 
 std::string exec(const char* cmd) 
 {
@@ -42,7 +42,7 @@ void cmdHelp()
         "   ifma run <id>                       Execute the command with the specified id\n"
         "\n"
         "Examples:\n"
-        "   ifma xrandr \"swap displays\"       -- Returns all entries for \"xrandr\" with description containing \"swap displays\"\n\n"
+        "   ifma xrandr \"swap displays\"         -- Returns all entries for \"xrandr\" with description containing \"swap displays\"\n\n"
         "   ifma add pacman -Syu                -- Adds an entry for \"pacman\" with arguments \"-Syu\"\n\n"
         "   ifma add echo Hello there!          -- Adds an entry for \"echo\" with arguments \"Hello there!\"\n\n"
         "\n";

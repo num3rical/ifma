@@ -208,10 +208,32 @@ int main(int argc, char *argv[]) {
             }
             else
             {
-                std::string sql = "DELETE FROM ifma WHERE id = ?";
+                std::string sql = "SELECT * FROM ifma WHERE id = ?";
                 std::vector<std::string> queryArgs = {rowID};
-                queryDB(db, sql, queryArgs);
-                std::cout << "Removed entry [" << rowID << "]" << std::endl;
+                std::vector<rowResult> result = queryDB(db, sql, queryArgs);
+
+                if (result.size() < 1)
+                {
+                    std::cout << "invalid row option" << std::endl;
+                }
+                else
+                {
+                    printf("\nRemoving entry:");
+                    printf("\n[%s] %s\n", result[0].id.c_str(), result[0].description.c_str());
+                    printf("    %s %s\n", result[0].command.c_str(), result[0].args.c_str());
+                    printf("\n\n");
+
+                    std::string choice;
+                    std::cout << "Remove? (y/n): ";
+                    std::getline(std::cin, choice);
+
+                    if (choice == "y")
+                    {
+                        sql = "DELETE FROM ifma WHERE id = ?";
+                        queryDB(db, sql, queryArgs);
+                        std::cout << "Removed entry [" << rowID << "]" << std::endl;
+                    }
+                }
             }
         }
         else if (inputCmd == "run")
